@@ -8,7 +8,7 @@ The purpose of this tool is to provide an easy way to manipulate repetitive task
 
 [![Build Status](https://travis-ci.org/easyhrworld/cron-manager.svg?branch=master)](https://travis-ci.org/easyhrworld/cron-manager)
 [![Code Climate](https://codeclimate.com/github/MUlt1mate/cron-manager/badges/gpa.svg)](https://codeclimate.com/github/MUlt1mate/cron-manager)
-[![Test Coverage](https://codeclimate.com/github/MUlt1mate/cron-manager/badges/coverage.svg)](https://codeclimate.com/github/MUlt1mate/cron-manager/coverage)
+[![Coverage Status](https://coveralls.io/repos/github/easyhrworld/cron-manager/badge.svg?branch=master)](https://coveralls.io/github/easyhrworld/cron-manager?branch=master)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 [![Gitter](https://badges.gitter.im/MUlt1mate/cron-manager.svg)](https://gitter.im/MUlt1mate/cron-manager)
 
