@@ -1,14 +1,13 @@
 language: php
-
 php:
-  - 5.3
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7.0
-
+- 5.3
+- 5.4
+- 5.5
+- 5.6
+- 7.0
 install: composer update --dev --no-interaction
-
 script: phpunit --coverage-text
-
-after_script: ./codeclimate.sh
+after_script: "./codeclimate.sh"
+notifications:
+  slack:
+    secure: GDlC9kY5/4FiYpue3EyQ2y/s9zBv6NpH9sRbkX932SK8St3k+Vrv3ldH+rerTo50c1BYsNeJcnJ1EIeOgv4l7qwRQXcMewKTAvt8Ru0auP4KNcx4uEjp5flUSXH8w3xKyVDweu/ixfo7yF3+OONgwVkmAqRIkALThEdVER1W4R/P/UKF6AAf9T3AzRuV9KYcdvEUlZHv3CLqN/7xEmqTwMZWx+4/K2VFN0aVokooZnucoMG1KqEwPvBeZHL2yAbZi6vq9ci4i71JLnoSrI2UYh/OvMpDGQcWwK6AlCwdMZ0OZ2z0IhbabCjvnh+t5ln1a6gIV+9zsTFfSmQrCA4mhrWLwTMc+JAYlsl93Y7hQ5o6udnrSHIWstfV93/gQ0ab6+HBWgkn4oDelEEYkP/kG0omPWiVy5aSwfnOaX5eaVCgrlwLzNVk22IfMid7TZU/v9sg9fhHGUDvvcj5T/K5V/bhO+bl8nsCZlCEdR1l6UhVRZXHsZ+ApmYDgnebbanEUgYGdAz1RWsqaMDeIOPYgNZyeX2ml1mPGZhIvu1d7VJzZYEdGhmtcQspjUp6dhWPZ3PnLCPXPnzMvuyDez6oEvgdVBYwNeMQnvnduHHPVxQKyK8B4c3HHCd3IvUgNVXVqc9N4/tenMqKdmNKSvpQ9Pyg8O9zCG/WrTZwxxbOTbQ=
