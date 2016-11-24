@@ -111,7 +111,9 @@ class TaskRunner
 
             return call_user_func_array(array($obj, $method), $args);
         } catch (\Exception $e) {
+            log_message("error", 'Caught an exception: ' . get_class($e) . ': ' . PHP_EOL . $e->getMessage() . PHP_EOL);
             echo 'Caught an exception: ' . get_class($e) . ': ' . PHP_EOL . $e->getMessage() . PHP_EOL;
+            mail("buildbot@streetlightsoftware.com", "Error while running cron", 'Caught an exception: ' . get_class($e) . ': ' . PHP_EOL . $e->getMessage() . PHP_EOL);
             return false;
         }
     }
