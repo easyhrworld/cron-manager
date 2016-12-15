@@ -98,8 +98,17 @@ class TaskRunner
      */
     public static function parseAndRunCommand($command)
     {
+        $error_class = "";
+        $error_method = "";
+        $error_args = "";
+
         try {
             list($class, $method, $args) = TaskManager::parseCommand($command);
+
+            $error_class = $class;
+            $error_method = $method;
+            $error_args = json_encode($args);
+
             if (!class_exists($class)) {
                 TaskLoader::loadController($class);
             }
@@ -111,9 +120,20 @@ class TaskRunner
 
             return call_user_func_array(array($obj, $method), $args);
         } catch (\Exception $e) {
-            log_message("error", 'Caught an exception: ' . get_class($e) . ': ' . PHP_EOL . $e->getMessage() . PHP_EOL);
-            echo 'Caught an exception: ' . get_class($e) . ': ' . PHP_EOL . $e->getMessage() . PHP_EOL;
-            mail("buildbot@streetlightsoftware.com", "Error while running cron", 'Caught an exception: ' . get_class($e) . ': ' . PHP_EOL . $e->getMessage() . PHP_EOL);
+            $error = "Error Occurred" . PHP_EOL;
+            $error .= "Class: $error_class" . PHP_EOL;
+            $error .= "Method: $error_method" . PHP_EOL;
+            $error .= "Arguments: $error_args" . PHP_EOL;
+            $error .= "Caught an exception: " . get_class($e) . ": " . PHP_EOL . $e->getMessage() . PHP_EOL;
+
+            log_message("error", $error);
+
+            echo $error;
+
+            mail("buildbot@streetlightsoftware.com",
+                "Error while running cron",
+                $error);
+
             return false;
         }
     }
