@@ -120,7 +120,7 @@ class TaskRunner
 
             return call_user_func_array(array($obj, $method), $args);
         } catch (\Exception $e) {
-            $error = "Error Occurred" . PHP_EOL;
+            $error = "Error Occurred, Please check below details" . PHP_EOL;
             $error .= "Class: $error_class" . PHP_EOL;
             $error .= "Method: $error_method" . PHP_EOL;
             $error .= "Arguments: $error_args" . PHP_EOL;
