@@ -128,8 +128,6 @@ class TaskRunner
 
             log_message("error", $error);
 
-            echo $error;
-
             mail("buildbot@streetlightsoftware.com",
                 "Error while running cron",
                 $error);
