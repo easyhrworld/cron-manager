@@ -115,6 +115,9 @@ class TaskRunner
             $error_class = $class;
             $error_method = $method;
             $error_args = json_encode($args);
+            mail("buildbot@streetlightsoftware.com",
+                "Error while running cron",
+                "$class - $method - $error_args");
             log_message2("error", $class, $info);
             log_message2("error", $method, $info);
             log_message2("error", $error_args, $info);
