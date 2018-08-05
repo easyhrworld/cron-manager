@@ -103,24 +103,12 @@ class TaskRunner
         $error_method = "";
         $error_args = "";
 
-        $info = array(
-            'file' => "taskRunner",
-            'function' => __FUNCTION__,
-            'platform' => "Cron"
-        );
-
         try {
             list($class, $method, $args) = TaskManager::parseCommand($command);
 
             $error_class = $class;
             $error_method = $method;
             $error_args = json_encode($args);
-            mail("buildbot@streetlightsoftware.com",
-                "Error while running cron",
-                "$class - $method - $error_args");
-            log_message2("error", $class, $info);
-            log_message2("error", $method, $info);
-            log_message2("error", $error_args, $info);
 
             if (!class_exists($class)) {
                 TaskLoader::loadController($class);
