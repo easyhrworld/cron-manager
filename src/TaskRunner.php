@@ -1,4 +1,5 @@
 <?php
+
 namespace mult1mate\crontab;
 
 use Cron\CronExpression;
@@ -102,15 +103,21 @@ class TaskRunner
         $error_method = "";
         $error_args = "";
 
+        $info = array(
+            'file' => "taskRunner",
+            'function' => __FUNCTION__,
+            'platform' => "Cron"
+        );
+
         try {
             list($class, $method, $args) = TaskManager::parseCommand($command);
 
             $error_class = $class;
             $error_method = $method;
             $error_args = json_encode($args);
-            log_message("error", $class);
-            log_message("error", $method);
-            log_message("error", $error_args);
+            log_message2("error", $class, $info);
+            log_message2("error", $method, $info);
+            log_message2("error", $error_args, $info);
 
             if (!class_exists($class)) {
                 TaskLoader::loadController($class);
