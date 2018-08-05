@@ -108,6 +108,9 @@ class TaskRunner
             $error_class = $class;
             $error_method = $method;
             $error_args = json_encode($args);
+            log_message("error", $class);
+            log_message("error", $method);
+            log_message("error", $error_args);
 
             if (!class_exists($class)) {
                 TaskLoader::loadController($class);
